@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxo5ib851ffjn"]
+
+[ext_resource type="Texture2D" uid="uid://dikpry2x3hv04" path="res://assets/ui/message_box.png" id="1_84ee0"]
+[ext_resource type="Script" uid="uid://bybne30jxv8pc" path="res://scripts/ui/MessageManager.cs" id="1_yl3ye"]
+[ext_resource type="FontFile" uid="uid://iaopwtexy8gd" path="res://assets/fonts/pokemon-emerald.ttf" id="2_yl3ye"]
+
+[node name="MessageManager" type="CanvasLayer" node_paths=PackedStringArray("Box", "Label")]
+script = ExtResource("1_yl3ye")
+Box = NodePath("Control/NinePatchRect")
+Label = NodePath("Control/NinePatchRect/RichTextLabel")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 3.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.155652
+anchor_top = 0.684129
+anchor_right = 0.845217
+anchor_bottom = 0.936826
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_84ee0")
+region_rect = Rect2(0, 0, 232, 78)
+patch_margin_left = 12
+patch_margin_top = 10
+patch_margin_right = 12
+patch_margin_bottom = 12
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.025
+anchor_top = 0.183
+anchor_right = 0.968
+anchor_bottom = 0.893
+offset_left = 0.0888023
+offset_top = 0.0804863
+offset_right = 0.0383911
+offset_bottom = -0.000686646
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.473976, 0.473976, 0.473976, 1)
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("2_yl3ye")
+theme_override_font_sizes/normal_font_size = 40
+text = "Nintendo, make your games cheaper pls..."
+metadata/_edit_use_anchors_ = true
