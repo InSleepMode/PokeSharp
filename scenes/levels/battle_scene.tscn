@@ -1,0 +1,142 @@
+[gd_scene load_steps=8 format=3 uid="uid://betdat6b4e3gl"]
+
+[ext_resource type="Script" uid="uid://m5f0742bpgwc" path="res://scenes/levels/BattleUi.cs" id="1_6b61y"]
+[ext_resource type="Script" uid="uid://cwfclbyji7btn" path="res://scenes/levels/BattleScene.cs" id="1_a0jns"]
+[ext_resource type="FontFile" uid="uid://iaopwtexy8gd" path="res://assets/fonts/pokemon-emerald.ttf" id="2_6a6ir"]
+[ext_resource type="Script" uid="uid://cln2hq8don51i" path="res://scenes/levels/BattleManager.cs" id="2_k8b4e"]
+[ext_resource type="PackedScene" uid="uid://b186vqy8771ry" path="res://scenes/characters/haunter.tscn" id="2_r6rit"]
+[ext_resource type="PackedScene" uid="uid://bnfagyfku8xe4" path="res://scenes/battle/bg.tscn" id="3_6a6ir"]
+[ext_resource type="PackedScene" uid="uid://51yxq71jefsp" path="res://scenes/characters/pikachu.tscn" id="3_smbrp"]
+
+[node name="BattleScene" type="Node2D" node_paths=PackedStringArray("PlayerSpawn", "EnemySpawn")]
+script = ExtResource("1_a0jns")
+PlayerPokemonScene = ExtResource("2_r6rit")
+EnemyPokemonScene = ExtResource("3_smbrp")
+PlayerSpawn = NodePath("PlayerSpawn")
+EnemySpawn = NodePath("EnemySpawn")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 531.0
+offset_top = -695.0
+offset_right = 623.0
+offset_bottom = -468.0
+script = ExtResource("1_6b61y")
+
+[node name="EnemyName" type="Label" parent="UI"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 23.0
+offset_top = 6.0
+offset_right = 115.0
+offset_bottom = 38.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.442911, 0.442911, 0.442911, 1)
+theme_override_colors/font_outline_color = Color(0.332881, 0.332881, 0.332881, 1)
+theme_override_fonts/font = ExtResource("2_6a6ir")
+theme_override_font_sizes/font_size = 32
+text = "Pikachu"
+
+[node name="EnemyHP" type="Label" parent="UI"]
+layout_mode = 2
+offset_left = 30.0
+offset_top = 40.0
+offset_right = 122.0
+offset_bottom = 63.0
+text = "20"
+
+[node name="FightButton" type="Control" parent="UI"]
+layout_mode = 2
+anchors_preset = 0
+offset_left = -420.0
+offset_top = 546.0
+offset_right = -328.0
+offset_bottom = 584.0
+
+[node name="Fight" type="Button" parent="UI/FightButton"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0.299547, 0.299547, 0.299547, 1)
+layout_mode = 2
+offset_left = 9.0
+offset_top = -11.0
+offset_right = 137.0
+offset_bottom = 57.0
+theme_type_variation = &"FlatButton"
+theme_override_fonts/font = ExtResource("2_6a6ir")
+theme_override_font_sizes/font_size = 60
+button_mask = 2
+text = "FIGHT"
+
+[node name="Bag" type="Button" parent="UI/FightButton"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0.299547, 0.299547, 0.299547, 1)
+layout_mode = 2
+offset_left = 38.0
+offset_top = 48.0
+offset_right = 118.0
+offset_bottom = 116.0
+theme_type_variation = &"FlatButton"
+theme_override_fonts/font = ExtResource("2_6a6ir")
+theme_override_font_sizes/font_size = 60
+button_mask = 2
+text = "BAG"
+
+[node name="Pokeball" type="Button" parent="UI/FightButton"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0.299547, 0.299547, 0.299547, 1)
+layout_mode = 2
+offset_left = 705.0
+offset_top = -15.0
+offset_right = 905.0
+offset_bottom = 53.0
+theme_type_variation = &"FlatButton"
+theme_override_fonts/font = ExtResource("2_6a6ir")
+theme_override_font_sizes/font_size = 60
+button_mask = 2
+text = "POKeBALL"
+
+[node name="Run" type="Button" parent="UI/FightButton"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0.299547, 0.299547, 0.299547, 1)
+layout_mode = 2
+offset_left = 748.0
+offset_top = 49.0
+offset_right = 792.0
+offset_bottom = 87.0
+theme_type_variation = &"FlatButton"
+theme_override_fonts/font = ExtResource("2_6a6ir")
+theme_override_font_sizes/font_size = 60
+button_mask = 2
+text = "RUN"
+
+[node name="PlayerSpawn" type="Node2D" parent="."]
+position = Vector2(182, -400)
+
+[node name="EnemySpawn" type="Node2D" parent="."]
+position = Vector2(852, -592)
+
+[node name="BG" parent="." instance=ExtResource("3_6a6ir")]
+
+[node name="BattleManager" type="Node" parent="."]
+script = ExtResource("2_k8b4e")
+
+[node name="PlayerHP" type="Label" parent="."]
+offset_left = 35.0
+offset_top = -436.0
+offset_right = 110.0
+offset_bottom = -413.0
+text = "18"
+
+[node name="PlayerName" type="Label" parent="."]
+texture_filter = 1
+offset_left = 37.0
+offset_top = -471.0
+offset_right = 123.0
+offset_bottom = -439.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.442911, 0.442911, 0.442911, 1)
+theme_override_colors/font_outline_color = Color(0.332881, 0.332881, 0.332881, 1)
+theme_override_fonts/font = ExtResource("2_6a6ir")
+theme_override_font_sizes/font_size = 32
+text = "Gengar"

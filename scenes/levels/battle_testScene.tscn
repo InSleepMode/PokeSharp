@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dppw061epm8yn"]
+
+[ext_resource type="Script" uid="uid://cse03xc7gh767" path="res://scripts/gameplay/levels/Level.cs" id="1_2jbva"]
+[ext_resource type="TileSet" uid="uid://c5bfqvwucutb6" path="res://resources/tilesets/level.tres" id="2_m1jy6"]
+[ext_resource type="PackedScene" uid="uid://dcpmn21yrwe6w" path="res://scenes/levels/scene_trigger.tscn" id="3_m02gq"]
+[ext_resource type="PackedScene" uid="uid://wi4tyhxihndi" path="res://scenes/levels/spawn_point.tscn" id="4_xhflv"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_2jbva")
+Bottom = 320
+Right = 512
+
+[node name="Tiles" type="Node2D" parent="."]
+
+[node name="Ground" type="TileMapLayer" parent="Tiles"]
+texture_filter = 1
+tile_map_data = PackedByteArray(0, 0, 16, 0, 8, 0, 3, 0, 1, 0, 1, 0, 0, 0)
+tile_set = ExtResource("2_m1jy6")
+
+[node name="Boundaries" type="Node" parent="."]
+
+[node name="SceneTriggers" type="Node" parent="."]
+
+[node name="SceneTrigger2" parent="SceneTriggers" instance=ExtResource("3_m02gq")]
+position = Vector2(240, 192)
+TargetLevelTrigger = 6
+EntryDirection = Vector2(0, -1)
+
+[node name="SpawnPoints" type="Node" parent="."]
+
+[node name="SpawnPoint" parent="SpawnPoints" instance=ExtResource("4_xhflv")]
+position = Vector2(224, 152)

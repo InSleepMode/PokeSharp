@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnfagyfku8xe4"]
+
+[ext_resource type="Texture2D" uid="uid://brps8mxc118ix" path="res://assets/battle/background.png" id="1_gcna5"]
+[ext_resource type="Texture2D" uid="uid://bvq4ulse3fnw4" path="res://assets/battle/battleFoeBox.png" id="2_ntsnb"]
+
+[node name="BG" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+
+[node name="Background" type="Sprite2D" parent="ParallaxLayer"]
+texture_filter = 1
+position = Vector2(639, -372)
+scale = Vector2(4.95914, 2.78405)
+texture = ExtResource("1_gcna5")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+
+[node name="BattleFoeBox" type="Sprite2D" parent="ParallaxLayer2"]
+texture_filter = 1
+position = Vector2(729, -661)
+scale = Vector2(1.4231, 1.20135)
+texture = ExtResource("2_ntsnb")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+
+[node name="BattleFoeBox" type="Sprite2D" parent="ParallaxLayer3"]
+texture_filter = 1
+position = Vector2(210, -444)
+scale = Vector2(1.4231, 1.20135)
+texture = ExtResource("2_ntsnb")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-10, -731)
+scale = Vector2(-418.393, -418.775)
+anchor_mode = 0

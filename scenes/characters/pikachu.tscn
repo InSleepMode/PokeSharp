@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://51yxq71jefsp"]
+
+[ext_resource type="Texture2D" uid="uid://la8rqv7fwdq8" path="res://assets/pokemons/pikachu.png" id="1_7lpj1"]
+
+[node name="haunter" type="Node2D"]
+
+[node name="Pikachu" type="Sprite2D" parent="."]
+position = Vector2(99.625, 89.875)
+scale = Vector2(0.495636, 0.390998)
+texture = ExtResource("1_7lpj1")
