@@ -26,11 +26,7 @@ namespace Game.core
 				Seed = Seed
 			};
 
-			//Logger.Debug("Loading Globals ...");
 			Logger.Info("Loading Globals ...");
-			//Logger.Warning("Loading Globals ...");
-			//Logger.Error("Loading Globals ...");
-
 		}
 
 		public static RandomNumberGenerator GetRandomNumberGenerator()
