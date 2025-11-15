@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="MoveResource" load_steps=2 format=3 uid="uid://3iyrf0yo1qic"]
+
+[ext_resource type="Script" uid="uid://ckm2vkanakb6a" path="res://scripts/core/enums/MoveResource.cs" id="1_qlr0y"]
+
+[resource]
+script = ExtResource("1_qlr0y")
+Name = "bind"
+Target = 5
+Category = 0
+PokemonType = 1
+Accuracy = 85
+CritRate = 0
+Drain = 0
+FlinchChance = 0
+Healing = 0
+MaxHits = -1
+MaxTurns = 6
+MinHits = -1
+MinTurns = 5
+Power = 15
+PP = 20
+AilmentChance = 100
+Ailment = 8
+StatChanges = Dictionary[int, int]({})

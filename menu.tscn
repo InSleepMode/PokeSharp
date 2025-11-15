@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://bf8ol4u20skeb"]
+
+[ext_resource type="Script" uid="uid://dfqd43w5b18mj" path="res://scripts/ui/MenuManager.cs" id="1_4hy44"]
+[ext_resource type="Texture2D" uid="uid://ctpjfoq0x7t7o" path="res://assets/ui/menu_box_1.png" id="1_mae5d"]
+[ext_resource type="FontFile" uid="uid://iaopwtexy8gd" path="res://assets/fonts/pokemon-emerald.ttf" id="2_4hy44"]
+
+[node name="Menu" type="CanvasLayer"]
+scale = Vector2(4, 4)
+transform = Transform2D(4, 0, 0, 4, 0, 0)
+script = ExtResource("1_4hy44")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control"]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 112.0
+texture = ExtResource("1_mae5d")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/NinePatchRect"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 4.0
+offset_right = 72.0
+offset_bottom = 140.0
+scale = Vector2(0.75, 0.75)
+
+[node name="Profile" type="Label" parent="Control/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.435294, 0.435294, 0.533333, 1)
+theme_override_fonts/font = ExtResource("2_4hy44")
+text = "    MENU"
+
+[node name="Bag" type="Button" parent="Control/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_4hy44")
+theme_override_font_sizes/font_size = 12
+text = "BAG"
+
+[node name="Save" type="Button" parent="Control/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_4hy44")
+theme_override_font_sizes/font_size = 12
+text = "SAVE"
+
+[node name="Exit" type="Button" parent="Control/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_4hy44")
+theme_override_font_sizes/font_size = 12
+text = "EXIT"
+
+[node name="About" type="Button" parent="Control/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_4hy44")
+theme_override_font_sizes/font_size = 12
+text = "ABOUT"

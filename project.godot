@@ -10,20 +10,39 @@ config_version=5
 
 [application]
 
-config/name="PokemonSharp"
-run/main_scene="uid://dqwtd0u6jqvwc"
+config/name="PokemonGodotVersion"
+run/main_scene="uid://bibf1kjdrfikk"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
+run/size/viewport_height=720
+run/size/viewport_width=1280
+run/size/resizable=false
+run/size/mode=0
 
 [autoload]
 
 Globals="*res://scripts/core/Globals.cs"
 Signals="*res://scripts/core/Signals.cs"
-SceneManager="*res://scenes/core/scene_manager.tscn"
+GameState="*res://scripts/core/GameState.cs"
+SceneTransition="*res://scripts/core/SceneTransition.cs"
+MenuController="*res://scripts/ui/MenuController.cs"
+SaveManager="*res://scripts/core/SaveManager.cs"
+Audio="*res://audio.tscn"
+
+[display]
+
+window/size/viewport_width=1240
+window/size/viewport_height=720
+window/size/resizable=false
+window/stretch/mode="viewport"
 
 [dotnet]
 
 project/assembly_name="PokemonSharp"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/MoveImporter/plugin.cfg")
 
 [input]
 

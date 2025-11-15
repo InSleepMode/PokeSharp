@@ -8,6 +8,11 @@ public partial class Signals : Node {
 	public static Signals Instance { get; private set; }
 
 	[Signal] public delegate void MessageBoxOpenEventHandler(bool value);
+	
+	//Signals for battle system
+	[Signal] public delegate void BattleStartedEventHandler();
+	[Signal] public delegate void BattleEndedEventHandler();
+
 
 	public override void _Ready()
 	{

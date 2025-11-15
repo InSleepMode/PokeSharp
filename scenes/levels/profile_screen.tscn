@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://hd31japqif8f"]
+
+[ext_resource type="Script" uid="uid://bxdgea8gpxnmp" path="res://scripts/ui/ProfileScreen.cs" id="1_orvo7"]
+[ext_resource type="Texture2D" uid="uid://cs8q2eoyywnq" path="res://bag.png" id="2_sq4m1"]
+[ext_resource type="FontFile" uid="uid://iaopwtexy8gd" path="res://assets/fonts/pokemon-emerald.ttf" id="3_l27gk"]
+
+[node name="ProfileScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_orvo7")
+
+[node name="Bag" type="Sprite2D" parent="."]
+position = Vector2(164, 104)
+scale = Vector2(0.136667, 0.13)
+texture = ExtResource("2_sq4m1")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 8.0
+offset_right = 224.0
+offset_bottom = 104.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Profile" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_l27gk")
+theme_override_font_sizes/font_size = 16
+text = "PROFILE"
+horizontal_alignment = 1
+
+[node name="StatsPanel" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/StatsPanel"]
+layout_mode = 2
+
+[node name="PlayerName" type="Label" parent="MarginContainer/VBoxContainer/StatsPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_l27gk")
+theme_override_font_sizes/font_size = 12
+text = "Name: Ash"
+
+[node name="CaughtLabel" type="Label" parent="MarginContainer/VBoxContainer/StatsPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_l27gk")
+theme_override_font_sizes/font_size = 12
+text = "PokemonCaught:"
+
+[node name="BattlesLabel" type="Label" parent="MarginContainer/VBoxContainer/StatsPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_l27gk")
+theme_override_font_sizes/font_size = 12
+text = "Total victories:"

@@ -17,7 +17,7 @@ namespace Game.Gameplay
 
 		public override void _Ready()
 		{
-			CharacterMovement.Animation += PlayAnimation; //forgotten
+			CharacterMovement.Animation += PlayAnimation;
 			Logger.Info("loading player animation component...");
 		}
 
@@ -53,16 +53,9 @@ namespace Game.Gameplay
 
 			if (previousAnimation != ECharacterAnimation)
 			{
-				//Logger.Info($"Playing animation {ECharacterAnimation}");
 				Play(ECharacterAnimation.ToString());
 			}
-			// else if (animationType == "walk")
-			// {
-			// 	if (!IsPlaying())
-			// 	{
-			// 		Play(ECharacterAnimation.ToString());
-			// 	}
-			// }
+
 		}
 	}
 }

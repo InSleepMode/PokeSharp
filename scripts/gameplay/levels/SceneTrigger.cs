@@ -1,54 +1,41 @@
-
-using Game.core;
 using Godot;
+using Game.core;
 
-namespace Game.Gameplay
+namespace Game.Overworld
 {
+    public partial class SceneTrigger : Area2D
+    {
+        [Export] public string TargetScene = "small_town";
+        [Export] public int SpawnTriggerIndex = 0;
+        
+        private bool _triggered = false;
 
-	public partial class SceneTrigger : Area2D
-	{
-		[ExportCategory("Target Scene Vars")]
-		[Export]
-		public LevelName TargetLevelName;
+        public override void _Ready()
+        {
+            BodyEntered += OnBodyEntered;
+            BodyExited += OnBodyExited;
+            
+        }
 
-		[Export]
-		public int TargetLevelTrigger = 0;
+        private void OnBodyEntered(Node2D body)
+        {
+            if (_triggered) return;
+            
+            if (body.Name != "Player") return;
+            
+            _triggered = true;
+            
+            GameState.Instance.SaveSpawnTrigger(SpawnTriggerIndex);
+            
+            SceneTransition.GoTo(TargetScene);
+        }
 
-		[ExportCategory("Current Scene Vars")]
-		[Export]
-		public int CurrentLevelTrigger = 0;
-
-		[Export]
-		public Vector2 EntryDirection;
-
-		[Export]
-		public bool Locked = false;
-
-		public override void _Ready()
-		{
-			BodyEntered += OnBodyEntered;
-		}
-
-		public void OnBodyEntered(Node2D body)
-		{
-			if (body.Name != "Player") return;
-			if (Locked)
-			{
-				Logger.Info("Oops, the door is locked ...");
-				return;
-			}
-			SceneManager.ChangeLevel(levelName: TargetLevelName, trigger: TargetLevelTrigger);
-		
-		}
-		public override void _EnterTree()
-		{
-			AddToGroup(LevelGroup.SCENETRIGGERS.ToString());
-		}
-
-		public override void _ExitTree()
-		{
-			RemoveFromGroup(LevelGroup.SCENETRIGGERS.ToString());
-		}
-
-	}
+        private void OnBodyExited(Node2D body)
+        {
+            if (body.Name == "Player")
+            {
+                _triggered = false;
+            }
+        }
+    }
 }

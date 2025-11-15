@@ -2,6 +2,7 @@ using Game.Utilities;
 using Godot;
 using Game.core;
 using System.Reflection.Metadata;
+using Game.Gameplay.Battle;
 
 
 namespace Game.Gameplay;
@@ -26,11 +27,23 @@ public partial class PlayerRoamState : State
 
 	public override void _Process(double delta)
 	{
+		if (IsInBattle()) return; //When you started battle
+
 		GetInputDirection();
 		GetInput(delta);
 		GetUseInput();
 	}
 
+	//Blocking method for battle scene
+	private bool IsInBattle()
+	{
+		var currentScene = GetTree().CurrentScene;
+		if (currentScene == null) return false;
+
+		string sceneName = currentScene.Name;
+		return sceneName.Contains("Battle") || sceneName.Contains("battle");
+	}
+	
 	public void GetInputDirection()
 	{
 		if (Input.IsActionJustPressed("ui_up"))
@@ -95,16 +108,6 @@ public partial class PlayerRoamState : State
 			{
 				var collider = (Node)(GodotObject)collision["collider"];
 				var colliderType = collider.GetType().Name;
-
-				switch (colliderType)
-				{
-					case "Sign":
-						((Sign)collider).PlayMessage();
-						break; 	
-					case "Npc":
-						((Npc)collider).PlayMessage(PlayerInput.Direction);
-						break; 		
-				}
 			}		 
 		}
 	}

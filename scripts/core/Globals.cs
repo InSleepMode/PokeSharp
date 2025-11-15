@@ -1,7 +1,4 @@
 using Godot;
-
-
-
 namespace Game.core
 {
 
@@ -9,8 +6,8 @@ namespace Game.core
 	{
 		public static Globals Instance { get; private set; }
 
-		public const int MOVE_NUMBERS = 165;
 		public const int GRID_SIZE = 16; //allows to change in Godot app
+		public const int MOVE_NUMBERS = 165;
 
 		[ExportCategory("Gameplay")]
 		[Export] public ulong Seed = 1337;
@@ -26,10 +23,7 @@ namespace Game.core
 				Seed = Seed
 			};
 
-			//Logger.Debug("Loading Globals ...");
 			Logger.Info("Loading Globals ...");
-			//Logger.Warning("Loading Globals ...");
-			//Logger.Error("Loading Globals ...");
 
 		}
 

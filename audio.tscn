@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://btbk83c28uf1o"]
+
+[ext_resource type="AudioStream" uid="uid://det6x7hx0sw56" path="res://pokemon.wav" id="1_qc0l7"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_qc0l7")
+autoplay = true

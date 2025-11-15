@@ -1,0 +1,146 @@
+[gd_scene load_steps=11 format=3 uid="uid://77epieb3k8e3"]
+
+[ext_resource type="Script" uid="uid://bwu5e28nvpha" path="res://scripts/gameplay/battle/BattleScene.cs" id="1_gkd30"]
+[ext_resource type="PackedScene" uid="uid://b186vqy8771ry" path="res://scenes/characters/haunter.tscn" id="2_3a2e7"]
+[ext_resource type="PackedScene" uid="uid://51yxq71jefsp" path="res://scenes/characters/pikachu.tscn" id="3_xhi6c"]
+[ext_resource type="Script" uid="uid://dwd5l0wunxpp1" path="res://scripts/gameplay/battle/BattleManager.cs" id="4_wq113"]
+[ext_resource type="PackedScene" uid="uid://bnfagyfku8xe4" path="res://scenes/battle/bg.tscn" id="5_ipwd7"]
+[ext_resource type="Script" uid="uid://cs7o4uyg1m4bx" path="res://scripts/gameplay/battle/BattleUI.cs" id="6_c5ou0"]
+[ext_resource type="FontFile" uid="uid://iaopwtexy8gd" path="res://assets/fonts/pokemon-emerald.ttf" id="7_mukch"]
+[ext_resource type="Script" uid="uid://bybne30jxv8pc" path="res://scripts/ui/MessageManager.cs" id="8_onaxf"]
+[ext_resource type="Texture2D" uid="uid://mna3e4ygoflx" path="res://assets/pokemons/haunter.png" id="9_26ywk"]
+[ext_resource type="Texture2D" uid="uid://dmt12sh7xd0eg" path="res://assets/pokemons/squirtle.png" id="10_iel8c"]
+
+[node name="BattleScene" type="Node2D" node_paths=PackedStringArray("PlayerSpawn", "EnemySpawn")]
+z_as_relative = false
+position = Vector2(6, 0)
+script = ExtResource("1_gkd30")
+PlayerPokemonScene = ExtResource("2_3a2e7")
+EnemyPokemonScene = ExtResource("3_xhi6c")
+LevelName = null
+EncounterRate = null
+Top = null
+Bottom = null
+Left = null
+Right = null
+PlayerSpawn = NodePath("PlayerSpawn")
+EnemySpawn = NodePath("EnemySpawn")
+
+[node name="PlayerSpawn" type="Node2D" parent="."]
+position = Vector2(242, 324)
+
+[node name="EnemySpawn" type="Node2D" parent="."]
+position = Vector2(869, 179)
+
+[node name="BattleManager" type="Node" parent="."]
+script = ExtResource("4_wq113")
+
+[node name="BG" parent="." instance=ExtResource("5_ipwd7")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(620, 358)
+
+[node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("_fightButton", "_runButton", "_pokeballButton", "_battleManager")]
+script = ExtResource("6_c5ou0")
+_fightButton = NodePath("FightButton")
+_runButton = NodePath("RunButton")
+_pokeballButton = NodePath("Pokeball")
+_battleManager = NodePath("../BattleManager")
+
+[node name="FightButton" type="Button" parent="UI"]
+anchors_preset = -1
+anchor_right = 0.0298387
+anchor_bottom = 0.0236111
+offset_left = 119.0
+offset_top = 586.0
+offset_right = 240.0
+offset_bottom = 652.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_mukch")
+theme_override_font_sizes/font_size = 75
+text = "FIGHT"
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Pokeball" type="Button" parent="UI"]
+offset_left = 486.0
+offset_top = 586.0
+offset_right = 734.0
+offset_bottom = 669.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_mukch")
+theme_override_font_sizes/font_size = 75
+text = "POKEBALL"
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="RunButton" type="Button" parent="UI"]
+offset_left = 971.0
+offset_top = 583.0
+offset_right = 1075.0
+offset_bottom = 671.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_mukch")
+theme_override_font_sizes/font_size = 75
+text = "RUN"
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayerHPBar" type="ProgressBar" parent="UI"]
+offset_left = 86.0
+offset_top = 285.0
+offset_right = 90.0
+offset_bottom = 312.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_mukch")
+theme_override_font_sizes/font_size = 21
+value = 100.0
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayerName" type="Label" parent="UI"]
+offset_left = 55.0
+offset_top = 256.0
+offset_right = 127.0
+offset_bottom = 286.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_mukch")
+theme_override_font_sizes/font_size = 30
+text = "GENGAR"
+metadata/_edit_use_anchors_ = true
+
+[node name="EnemyName" type="Label" parent="UI"]
+offset_left = 592.0
+offset_top = 116.0
+offset_right = 676.0
+offset_bottom = 146.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_mukch")
+theme_override_font_sizes/font_size = 30
+text = "SQUIRTLE"
+metadata/_edit_use_anchors_ = true
+
+[node name="EnemyHP" type="ProgressBar" parent="UI"]
+offset_left = 630.0
+offset_top = 144.0
+offset_right = 634.0
+offset_bottom = 171.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_mukch")
+theme_override_font_sizes/font_size = 21
+value = 100.0
+metadata/_edit_use_anchors_ = true
+
+[node name="MessageManager" type="Node" parent="."]
+script = ExtResource("8_onaxf")
+
+[node name="Haunter" type="Sprite2D" parent="."]
+position = Vector2(295, 417)
+scale = Vector2(0.227273, 0.201973)
+texture = ExtResource("9_26ywk")
+
+[node name="Squirtle" type="Sprite2D" parent="."]
+position = Vector2(994, 272)
+scale = Vector2(0.273585, 0.249347)
+texture = ExtResource("10_iel8c")

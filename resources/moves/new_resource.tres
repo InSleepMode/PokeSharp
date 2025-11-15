@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="MoveResource" load_steps=2 format=3 uid="uid://b46cwo1oychoe"]
+
+[ext_resource type="Script" uid="uid://ckm2vkanakb6a" path="res://scripts/core/enums/MoveResource.cs" id="1_ajyvo"]
+
+[resource]
+script = ExtResource("1_ajyvo")
+Name = ""
+Target = 5
+Category = 0
+pokemonType = 0
+Accuracy = 0
+CritRate = 0
+Drain = 0
+FlinchChance = 0
+Healing = 0
+MaxHits = 0
+MaxTurns = 0
+MinHits = 0
+MinTurns = 0
+Power = 0
+PP = 0
+AilmentChance = 0
+Ailment = 0
+StatChanges = Dictionary[int, int]({})
+metadata/_custom_type_script = "uid://ckm2vkanakb6a"

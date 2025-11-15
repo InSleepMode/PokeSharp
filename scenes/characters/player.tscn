@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cnwi6j23v5ula"]
+[gd_scene load_steps=39 format=3 uid="uid://cnwi6j23v5ula"]
 
 [ext_resource type="Texture2D" uid="uid://bbhqq43g7nduv" path="res://assets/characters/player.png" id="1_dsppa"]
 [ext_resource type="Script" uid="uid://3qb23mvfcam2" path="res://scripts/gameplay/characters/PlayerInput.cs" id="1_m1650"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://cw6fj208wei14" path="res://scripts/utilities/StateMachine.cs" id="5_nuhm4"]
 [ext_resource type="Script" uid="uid://dws0ueefxclof" path="res://scripts/gameplay/characters/PlayerCamera.cs" id="6_0eeld"]
 [ext_resource type="Script" uid="uid://b83s50c3liyhu" path="res://scripts/gameplay/characters/states/PlayerRoamState.cs" id="6_lta2g"]
-[ext_resource type="Script" uid="uid://c6qqhhamws74w" path="res://scripts/gameplay/characters/states/PlayerMessageState.cs" id="9_qgnko"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rv3j1"]
 size = Vector2(16, 16)
@@ -274,10 +273,12 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("StateMachine")]
 z_index = 5
+collision_layer = 4
 script = ExtResource("1_wvkiw")
 StateMachine = NodePath("StateMachine")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
+texture_filter = 1
 position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_rv3j1")
 
@@ -294,7 +295,7 @@ texture_filter = 1
 position = Vector2(8, 4)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_4ly3l")
-animation = &"turn_down"
+animation = &"walk_up"
 script = ExtResource("4_qfswh")
 CharacterInput = NodePath("../Input")
 CharacterMovement = NodePath("../Movement")
@@ -313,10 +314,5 @@ CurrentState = NodePath("Roam")
 script = ExtResource("6_lta2g")
 PlayerInput = NodePath("../../Input")
 CharacterMovement = NodePath("../../Movement")
-StateOwner = NodePath("../..")
-StateMachine = NodePath("..")
-
-[node name="Message" type="Node" parent="StateMachine" node_paths=PackedStringArray("StateOwner", "StateMachine")]
-script = ExtResource("9_qgnko")
 StateOwner = NodePath("../..")
 StateMachine = NodePath("..")

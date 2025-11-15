@@ -6,6 +6,8 @@
 size = Vector2(16, 16)
 
 [node name="SceneTrigger" type="Area2D"]
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("1_x683l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b186vqy8771ry"]
+
+[ext_resource type="Texture2D" uid="uid://mna3e4ygoflx" path="res://assets/pokemons/haunter.png" id="1_khmg7"]
+
+[node name="haunter" type="Node2D"]
+
+[node name="Haunter" type="Sprite2D" parent="."]
+position = Vector2(108.313, 97.4375)
+scale = Vector2(0.195657, 0.202622)
+texture = ExtResource("1_khmg7")

@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://c867mn22sby4k"]
+
+[ext_resource type="Texture2D" uid="uid://djkol7cf48x1f" path="res://bckg.jpg" id="1_l715i"]
+[ext_resource type="FontFile" uid="uid://iaopwtexy8gd" path="res://assets/fonts/pokemon-emerald.ttf" id="2_aiqqb"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bckg" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(168, 88)
+scale = Vector2(0.478912, 0.462651)
+texture = ExtResource("1_l715i")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 120.0
+offset_top = 8.0
+offset_right = 231.0
+offset_bottom = 33.0
+theme_override_fonts/font = ExtResource("2_aiqqb")
+theme_override_font_sizes/font_size = 25
+text = "ABOUT"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 2
+offset_left = 94.0
+offset_top = 52.0
+offset_right = 228.0
+offset_bottom = 87.0
+theme_override_fonts/font = ExtResource("2_aiqqb")
+text = "University project
+For Study Purposes Only"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+offset_left = 94.0
+offset_top = 34.0
+offset_right = 205.0
+offset_bottom = 69.0
+theme_override_fonts/font = ExtResource("2_aiqqb")
+text = "GitHub: InSleepMode
+"

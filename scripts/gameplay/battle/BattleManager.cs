@@ -1,56 +1,166 @@
+
 using Godot;
+using System;
+using Game.core.Data;
 
-namespace Game.Gameplay.Battle
+namespace Game.Gameplay.Battle;
+
+public partial class BattleManager : Node
 {
-    public partial class BattleManager : Node
+    [Export] private ProgressBar _playerHPBar;
+    [Export] private ProgressBar _enemyHPBar;
+    [Export] private Label _playerHPLabel;
+    [Export] private Label _enemyHPLabel;
+    [Export] private Label _enemyNameLabel;
+
+    private int playerHP = 100;
+    private int playerMaxHP = 100;
+    private int enemyHP = 50;
+    private int enemyMaxHP = 50;
+    private PokemonData wildPokemon;
+    private Random random = new Random();
+
+    public override void _Ready()
     {
-        private Pokemon _myPokemon;
-        private Pokemon _enemyPokemon;
 
+        wildPokemon = GameState.Instance?.WildPokemon;
 
-
-
-        public void StartBattle(Pokemon mine, Pokemon enemy)
+        if (wildPokemon != null)
         {
-            _myPokemon = mine;
-            _enemyPokemon = enemy;
-            GD.Print($"Battle started: {mine.Name} vs {enemy.Name}");
+            enemyHP = wildPokemon.MaxHP;
+            enemyMaxHP = wildPokemon.MaxHP;
 
+            if (_enemyNameLabel != null)
+            {
+                _enemyNameLabel.Text = $"Wild {wildPokemon.Name}";
+            }
+        }
+        else
+        {
+            if (_enemyNameLabel != null)
+            {
+                _enemyNameLabel.Text = "Wild Pokemon";
+            }
         }
 
-        public void PlayerAttack()
+        UpdateHPBars();
+        StartBattle();
+    }
+
+    private void StartBattle()
+    {
+        if (wildPokemon != null)
         {
+            MessageManager.PlayText($"Wild {wildPokemon.Name} appeared!");
+        }
+        else
+        {
+            MessageManager.PlayText("A wild Pokemon appeared!");
+        }
+    }
 
-            if (_enemyPokemon.isKilled) return;
+    private void UpdateHPBars()
+    {
+        if (_playerHPBar != null)
+        {
+            _playerHPBar.MaxValue = playerMaxHP;
+            _playerHPBar.Value = playerHP;
+        }
 
-            _enemyPokemon.TakeDamage(_myPokemon.AttackPower);
-            GD.Print($"{_myPokemon.Name} attacks! {_enemyPokemon.Name} has {_enemyPokemon.currentHP} HP");
+        if (_enemyHPBar != null)
+        {
+            _enemyHPBar.MaxValue = enemyMaxHP;
+            _enemyHPBar.Value = enemyHP;
+        }
 
-            if (_enemyPokemon.isKilled)
+        if (_playerHPLabel != null)
+        {
+            _playerHPLabel.Text = $"{playerHP}/{playerMaxHP}";
+        }
+
+        if (_enemyHPLabel != null)
+        {
+            _enemyHPLabel.Text = $"{enemyHP}/{enemyMaxHP}";
+        }
+    }
+
+    public void playerAttack()
+    {
+        int damage = random.Next(10, 26);
+        enemyHP -= damage;
+
+        if (enemyHP < 0)
+            enemyHP = 0;
+
+        MessageManager.PlayText($"You dealt {damage} damage!");
+        UpdateHPBars();
+
+        if (enemyHP <= 0)
+        {
+            MessageManager.PlayText("Enemy fainted!", "You won!");
+            GameState.Instance.WinBattle();//вызовем функцию по увеличению числа побед в бою
+            GetTree().CreateTimer(2.0).Timeout += EndBattle;
+        }
+        else
+        {
+            GetTree().CreateTimer(1.5).Timeout += EnemyAttack;
+        }
+    }
+
+    private void EnemyAttack()
+    {
+        int damage = random.Next(5, 16);
+        playerHP -= damage;
+
+        if (playerHP < 0)
+            playerHP = 0;
+
+        MessageManager.PlayText($"Enemy dealt {damage} damage!");
+        UpdateHPBars();
+
+        if (playerHP <= 0)
+        {
+            MessageManager.PlayText("You fainted!", "Game Over!");
+            GetTree().CreateTimer(2.0).Timeout += EndBattle;
+        }
+    }
+
+    public void catchPokemon()
+    {
+        bool caught = random.Next(0, 2) == 0;
+
+        if (caught)
+        {
+            if (wildPokemon != null)
             {
-                EndBattle(true);
+                MessageManager.PlayText($"Gotcha! Enemy pokemon was caught!");
+                GameState.Instance.CatchPokemon(wildPokemon);
             }
             else
             {
-                EnemyTurn();
+                MessageManager.PlayText("Gotcha! Pokemon was caught!");
             }
-        }
 
-        private void EnemyTurn()
+            GetTree().CreateTimer(2.0).Timeout += EndBattle;
+        }
+        else
         {
-            _myPokemon.TakeDamage(_enemyPokemon.AttackPower);
-            GD.Print($"{_enemyPokemon.Name} attacks! {_myPokemon.Name} has {_myPokemon.currentHP} HP");
-            if (_myPokemon.isKilled) EndBattle(false);
+            MessageManager.PlayText("Oh no! Pokemon broke free!");
+            GetTree().CreateTimer(1.5).Timeout += EnemyAttack;
         }
+    }
 
-        private void EndBattle(bool playerWon)
-        {
-            if (playerWon) GD.Print($"{_myPokemon.Name} won this battle!!!");
-            else GD.Print($"{_enemyPokemon.Name} won this battle!");
-        }
+    public void runFromBattle()
+    {
+        MessageManager.PlayText("Got away safely!");
+        GetTree().CreateTimer(1.5).Timeout += EndBattle;
+    }
 
-  
-        
+    private void EndBattle()
+    {
+        GD.Print("Battle ended");
+        GetTree().Paused = false;
+        SceneTransition.GoBack();
     }
 
 }

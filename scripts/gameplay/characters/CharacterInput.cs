@@ -1,4 +1,3 @@
-//using Game.core;
 using Godot;
 
 namespace Game.Gameplay
