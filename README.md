@@ -7,6 +7,24 @@ A Pokemon-inspired game built with Godot Engine, featuring exploration, random e
 **To download game go to Releases "Download game" -> Download Pokemon.GodotVersion.zip -> open folder -> run .exe file -> enjoy)**
 
 ---
+## Screenshots
+
+### City
+![City](screenshots/smalltown.jpg) 
+
+### Menu
+![City](screenshots/menu.jpg) 
+
+### House
+![City](screenshots/room.jpg) 
+
+### Battle
+![City](screenshots/battle.jpg) 
+
+### Profile
+![City](screenshots/profile.jpg) 
+
+---
 
 ## Tech Stack
 
@@ -201,4 +219,5 @@ Developed for educational purposes
 © 2025 - Study use only
 
 ---
+
 
