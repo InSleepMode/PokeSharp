@@ -10,20 +10,19 @@ A Pokemon-inspired game built with Godot Engine, featuring exploration, random e
 ## Screenshots
 
 ### City
-![City](screenshots/smalltown.jpg) 
+<img src="screenshots/smalltown.jpg" width="600">
 
 ### Menu
-![City](screenshots/menu.jpg) 
+<img src="screenshots/menu.jpg" width="600">
 
 ### House
-![City](screenshots/room.jpg) 
+<img src="screenshots/room.jpg" width="600">
 
 ### Battle
-![City](screenshots/battle.jpg) 
+<img src="screenshots/battle.jpg" width="600">
 
 ### Profile
-![City](screenshots/profile.jpg) 
-
+<img src="screenshots/profile.jpg" width="600">
 ---
 
 ## Tech Stack
@@ -219,5 +218,6 @@ Developed for educational purposes
 © 2025 - Study use only
 
 ---
+
 
 
