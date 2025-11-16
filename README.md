@@ -4,7 +4,7 @@
 
 A Pokemon-inspired game built with Godot Engine, featuring exploration, random encounters, and turn-based battles.
 
-**To download game go to Releases "Download game" -> Download Pokemon.GodotVersion.zip -> open folder -> run .exe file -> enjoy)**
+**To download game go to Releases "Download game" -> Download Pokemon.GodotVersion.zip -> open folder -> extract all files from .zip folder -> run .exe file -> enjoy)**
 
 ---
 ## Screenshots
@@ -44,7 +44,7 @@ Before running the project, ensure you have:
 
 ---
 
-## Installation & Running
+## Installation & Running in Godot Game Engine App
 
 1. Clone or download this repository
 2. Open Godot Engine 4.4.1 (Mono version)
@@ -218,6 +218,7 @@ Developed for educational purposes
 © 2025 - Study use only
 
 ---
+
 
 
 
